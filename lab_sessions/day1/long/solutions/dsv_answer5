@@ -1,0 +1,8 @@
+*[Answer 5]** These plots depecit a different trend from the one observed earlier. It appears that the higher the median household income is the more likely it is that the state is going to vote for a Democratic candidate. 
+
+**[Question 6]** What's wrong with this observation?
+
+**[Answer 6]** These plots were created using median household income which doesn't emphasize the income difference across the individual income classes. In fact it is well established that the higher the household income is the more likely it is that they'll vote for a Republican candidate. 
+
+import scipy.stats
+scipy.stats.pearsonr(income,c_p)

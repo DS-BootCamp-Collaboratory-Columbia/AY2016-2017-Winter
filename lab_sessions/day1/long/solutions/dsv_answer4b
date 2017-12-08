@@ -1,0 +1,2 @@
+import scipy.stats
+round(scipy.stats.pearsonr(fs_p,t_p)[0],3)

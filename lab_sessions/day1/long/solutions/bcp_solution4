@@ -1,0 +1,9 @@
+**[Solution 4]**  
+
+We are tasked to compute the following conditional probability:  
+$p(pedestrian,2-3pm\ |\ involved,\ Borough)$  
+
+Unlike the previous example in this example we'll assume that we are equally likely to be in any of the five boroughs. 
+We then have:  
+$p(pedestrian,\ 2-3pm\ |\ involved,\ Borough)\ = \ p(pedestrian\ |\ Borough,\ involved)*p( 2-3pm\ |\ Borough,\ involved)$  
+

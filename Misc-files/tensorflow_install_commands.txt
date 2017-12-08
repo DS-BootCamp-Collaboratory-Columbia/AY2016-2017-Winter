@@ -1,0 +1,8 @@
+try one of these if our standard installation instructions do not work:
+
+1.
+pip install 'tensorflow==0.12.0rc0'
+
+2. 
+pip install protobuf==3.0.0-beta-2
+pip install -i https://pypi.anaconda.org/jjhelmus/simple tensorflow

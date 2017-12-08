@@ -1,0 +1,45 @@
+First compute the probability that our friend has been in one of the 5 boroughs in the past month:
+
+p_brooklyn = 10.0/31
+p_manhattan = 15.0/31
+p_queens = 2.0/31
+p_bronx = 2.0/31
+p_si = 2.0/31
+print (p_brooklyn)
+
+boro_spcs=tree_data2[['boroname','spc_common']]
+boro_counts = pd.value_counts(boro_spcs['boroname'])
+boro_counts
+
+boro_nro = boro_spcs[boro_spcs['spc_common']=='northern red oak']
+nro_counts = pd.value_counts(boro_nro['boroname'])
+nro_counts
+
+p_nro_brooklyn = (1.0)*nro_counts['Brooklyn']/boro_counts['Brooklyn']
+print ("p(nro|brooklyn)="+str(p_nro_brooklyn))
+p_nro_queens = (1.0)*nro_counts['Queens']/boro_counts['Queens']
+print ("p(nro|queens)="+str(p_nro_queens))
+p_nro_bronx = (1.0)*nro_counts['Bronx']/boro_counts['Bronx']
+print ("p(nro|bronx)="+str(p_nro_bronx))
+p_nro_si = (1.0)*nro_counts['Staten Island']/boro_counts['Staten Island']
+print ("p(nro|si)="+str(p_nro_si))
+p_nro_manhattan = (1.0)*nro_counts['Manhattan']/boro_counts['Manhattan']
+print ("p(nro|manhattan)="+str(p_nro_manhattan
+
+p_nro = p_nro_brooklyn*p_brooklyn+p_nro_queens*p_queens+p_nro_bronx*p_bronx+p_nro_si*p_si+p_nro_manhattan*p_manhattan
+p_nro
+
+p_brooklyn_nro = (1.0)*(p_nro_brooklyn*p_brooklyn)/p_nro
+print ("p(brooklyn|nro)="+str(p_brooklyn_nro))
+p_queens_nro = (1.0)*(p_nro_queens*p_queens)/p_nro
+print ("p(queens|nro)="+str(p_queens_nro))
+p_bronx_nro = (1.0)*(p_nro_bronx*p_bronx)/p_nro
+print ("p(bronx|nro)="+str(p_bronx_nro))
+p_si_nro = (1.0)*(p_nro_si*p_si)/p_nro
+print ("p(si|nro)="+str(p_si_nro))
+p_manhattan_nro = (1.0)*(p_nro_manhattan*p_manhattan)/p_nro
+print ("p(manhattan|nro)="+str(p_manhattan_nro))
+
+Spend some time to analyze the results and to draw conclusions. 
+
+tree_data2[['boroname','spc_common']].groupby(tree_data2['boroname']).describe()

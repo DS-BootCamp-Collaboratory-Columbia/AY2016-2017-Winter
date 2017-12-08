@@ -1,0 +1,19 @@
+fig, ax = plt.subplots(1, 2, figsize=(16, 8))
+fig.suptitle("Food Stamp Program Participation vs. Percentage of Votes")
+ax[0].scatter(fs_p,c_p,color="blue")
+for i,j,k in zip(fs_p,c_p,state):
+    ax[0].annotate('%s' % k, xy=(i, j), fontsize=15, color='black')
+ax[0].set_xlim(left=0)
+ax[0].set_ylim([0,1])
+ax[0].set_title('Hillary Clinton ')
+ax[0].set_xlabel('Food Stamp Program [% of population]')
+ax[0].set_ylabel('Percentage of votes')
+
+
+ax[1].scatter(fs_p,t_p,color="red")
+for i,j,k in zip(fs_p,t_p,state):
+    ax[1].annotate('%s' % k, xy=(i, j), fontsize=15, color='black')
+plt.ylim([0,1])
+plt.title('Donald Trump')
+plt.xlabel('Food Stamp Program [% of population]')
+plt.ylabel('Percentage of votes')

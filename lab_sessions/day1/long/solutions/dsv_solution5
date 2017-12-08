@@ -1,0 +1,6 @@
+cyc_sum = cyclist_stat.groupby('BOROUGH').sum()
+borough_cyc_sum = cyc_sum.sum()
+borough_cyc_sum
+
+cyc_borough = cyc_sum['CYCLIST INJURED OR KILLED']/borough_cyc_sum['CYCLIST INJURED OR KILLED']
+cyc_borough

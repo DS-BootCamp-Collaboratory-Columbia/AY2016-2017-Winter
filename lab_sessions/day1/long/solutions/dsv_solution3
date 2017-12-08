@@ -1,0 +1,14 @@
+boro_shoes = tree_data2[['boroname', 'brch_shoe']]
+shoes_counts = pd.value_counts(boro_shoes['boroname'])
+shoes_counts
+
+yes_shoes = boro_shoes[boro_shoes['brch_shoe']=='Yes']
+yes_counts = pd.value_counts(yes_shoes['boroname'])
+yes_counts
+
+no_shoes = boro_shoes[boro_shoes['brch_shoe']=='No']
+no_counts = pd.value_counts(no_shoes['boroname'])
+no_counts
+
+percentage_shoes = yes_counts/(yes_counts+no_counts)*100
+percentage_shoes

@@ -1,0 +1,16 @@
+**[Hint]**
+We are tasked to compute the following conditional probabilities:  
+
+$p(Borough\ |\ northern\ red\ oak)$,  
+
+given that the person has visited all five boroughs within the past month with the following probability:  
+
+$p(Borough=Brooklyn)=\frac{10}{31}$  
+
+$p(Borough=Manhattan)=\frac{15}{31}$  
+
+$p(Borough=Staten\ Island)=\frac{2}{31}$  
+
+$p(Borough=Bronx)=\frac{2}{31}$  
+
+$p(Borough=Queens)=\frac{2}{31}$  

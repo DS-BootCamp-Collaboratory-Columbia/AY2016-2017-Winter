@@ -1,0 +1,3 @@
+c_p = np.asarray(elec_data['Clinton']/elec_data['Sum'])
+t_p = np.asarray(elec_data['Trump']/elec_data['Sum'])
+fs_p = np.asarray(fs_data['Participation']/census_data['Population'])

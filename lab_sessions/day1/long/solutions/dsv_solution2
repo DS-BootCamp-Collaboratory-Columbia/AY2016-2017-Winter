@@ -1,0 +1,22 @@
+fig, ax = plt.subplots(1, 2, figsize=(16, 8))
+fig.suptitle("Median Annual Household Income vs. Percentage of Votes")
+ax[0].scatter(income,c_p,color="blue")
+for i,j,k in zip(income,c_p,state):
+    ax[0].annotate('%s' % k, xy=(i, j), fontsize=15, color='black')
+ax[0].set_ylim([0,1])
+ax[0].set_title('Hillary Clinton')
+ax[0].set_xlabel('Median Annual Household Income [$]')
+ax[0].set_ylabel('Percentage of Votes')
+ax[0].get_xaxis().set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,}".format(int(x))))
+
+ax[1].scatter(income,t_p,color="red")
+for i,j,k in zip(income,t_p,state):
+    ax[1].annotate('%s' % k, xy=(i, j), fontsize=15, color='black')
+
+ax[1].set_ylim([0,1])
+ax[1].set_title('Donald Trump')
+ax[1].set_xlabel('Median Annual Household Income [$]')
+ax[1].set_ylabel('Percentage of Votes')
+ax[1].get_xaxis().set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,}".format(int(x))))
+
+

@@ -1,0 +1,74 @@
+Start by computing the probability of being injured as a pedestrian in each of the 5 boroughs:
+
+boro_stats = coll_data.groupby('BOROUGH').sum()
+boro_stats
+
+boro_victim_stats = boro_stats[[
+'NUMBER OF PERSONS INJURED',
+'NUMBER OF PERSONS KILLED',
+'NUMBER OF PEDESTRIANS INJURED',
+'NUMBER OF PEDESTRIANS KILLED',
+'NUMBER OF CYCLIST INJURED',
+'NUMBER OF CYCLIST KILLED',
+'NUMBER OF MOTORIST INJURED',
+'NUMBER OF MOTORIST KILLED']]
+boro_victim_stats.transpose()
+
+injured_counts = boro_victim_stats.transpose().sum(axis=0)
+injured_counts
+
+ped_inj_counts = boro_stats['NUMBER OF PEDESTRIANS INJURED']
+ped_inj_counts
+
+p_inj_brooklyn = (1.0)*ped_inj_counts['BROOKLYN']/injured_counts['BROOKLYN']
+print ("p(pedestrian|brooklyn, involved)="+str(p_inj_brooklyn))
+p_inj_queens = (1.0)*ped_inj_counts['QUEENS']/injured_counts['QUEENS']
+print ("p(pedestrian|queens, involved)="+str(p_inj_queens))
+p_inj_bronx = (1.0)*ped_inj_counts['BRONX']/injured_counts['BRONX']
+print ("p(pedestrian|bronx, involved)="+str(p_inj_bronx))
+p_inj_si = (1.0)*ped_inj_counts['STATEN ISLAND']/injured_counts['STATEN ISLAND']
+print ("p(pedestrian|state island, involved)="+str(p_inj_si))
+p_inj_manhattan = (1.0)*ped_inj_counts['MANHATTAN']/injured_counts['MANHATTAN']
+print ("p(pedestrian|manhattan, involved)="+str(p_inj_manhattan))
+
+collision_boro = coll_data['BOROUGH']
+collision_boro
+coll_counts = pd.value_counts(collision_boro)
+coll_counts
+
+time_boro = coll_data[['TIME','BOROUGH']]
+
+twopm_injuries = time_boro.loc[coll_data['TIME'].str.contains('14:')]
+twopm_injuries_borough =  pd.value_counts(twopm_injuries['BOROUGH'])
+twopm_injuries_borough
+
+sum_inj_2pm = pd.value_counts(twopm_injuries['TIME']).sum()
+sum_inj_2pm
+
+pedestrian_inj_twopm = twopm_injuries['NUMBER OF PEDESTRIANS INJURED'].sum()
+pedestrian_inj_twopm
+
+p_inj_2pm = (1.0)*pedestrian_inj_twopm/sum_inj_2pm
+p_inj_2pm
+
+p_2pm_brooklyn = (1.0)*twopm_injuries_borough['BROOKLYN']/coll_counts['BROOKLYN']
+print ("p(2-3pm|brooklyn, involved)="+str(p_2pm_brooklyn))
+p_2pm_queens = (1.0)*twopm_injuries_borough['QUEENS']/coll_counts['QUEENS']
+print ("p(2-3pm|queens, involved)="+str(p_2pm_queens))
+p_2pm_bronx = (1.0)*twopm_injuries_borough['BRONX']/coll_counts['BRONX']
+print ("p(2-3pm|bronx, involved)="+str(p_2pm_bronx))
+p_2pm_si = (1.0)*twopm_injuries_borough['STATEN ISLAND']/coll_counts['STATEN ISLAND']
+print ("p(2-3pm|state island, involved)="+str(p_2pm_si))
+p_2pm_manhattan = (1.0)*twopm_injuries_borough['MANHATTAN']/coll_counts['MANHATTAN']
+print ("p(2-3pm|manhattan, involved)="+str(p_2pm_manhattan))
+
+p_inj_brooklyn_2pm = p_inj_brooklyn*p_2pm_brooklyn
+print ("p(pedestrian,2−3pm|brooklyn,involved)="+str(p_inj_brooklyn_2pm))
+p_inj_queens_2pm = p_inj_queens*p_2pm_queens
+print ("p(pedestrian,2-3pm|queens,involved)="+str(p_inj_queens_2pm))
+p_inj_bronx_2pm = p_inj_bronx*p_2pm_bronx
+print ("p(pedestrian,2-3pm|bronx,involved)="+str(p_inj_bronx_2pm))
+p_inj_si_2pm = p_inj_si*p_2pm_si
+print ("p(pedestrian,2-3pm|brooklyn,involved)="+str(p_inj_si_2pm))
+p_inj_manhattan_2pm = p_inj_manhattan*p_2pm_manhattan
+print ("p(pedestrian,2-3pm|manhattan,involved)="+str(p_inj_manhattan_2pm))

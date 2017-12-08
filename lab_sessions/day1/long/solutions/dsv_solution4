@@ -1,0 +1,10 @@
+coll_data['INJURED OR KILLED']= coll_data['NUMBER OF CYCLIST INJURED']+coll_data['NUMBER OF CYCLIST KILLED']+coll_data['NUMBER OF PERSONS INJURED']+coll_data['NUMBER OF PERSONS KILLED']+coll_data['NUMBER OF MOTORIST INJURED']+coll_data['NUMBER OF MOTORIST KILLED']
+collision_all = coll_data[['BOROUGH', 'INJURED OR KILLED']]
+collision_sum = collision_all.groupby('BOROUGH').sum()
+collision_sum
+
+percentage_cyclist = cyc_sum['CYCLIST INJURED OR KILLED']/collision_sum['INJURED OR KILLED']
+percentage_cyclist
+
+fig = plt.figure()
+percentage_cyclist.plot.barh()

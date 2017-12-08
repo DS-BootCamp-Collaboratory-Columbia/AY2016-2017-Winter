@@ -1,0 +1,9 @@
+fig = plt.figure()
+ax = fig.add_subplot(111)
+plt.scatter(fs_p,t_p,color="red")
+for i,j,k in zip(fs_p,t_p,state):
+    ax.annotate('%s' % k, xy=(i, j), fontsize=15, color='black')
+plt.ylim([0,1])
+plt.title('Food Stamp Program Participation vs. Donald Trump Votes')
+plt.xlabel('Monthly Average Food Stamp Program Participation [% of population]')
+plt.ylabel('Donald Trump [% of votes]')
